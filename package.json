@@ -1,0 +1,36 @@
+{
+  "name": "@wekify/kifuliiru-core",
+  "version": "0.1.0",
+  "description": "Kifuliiru linguistic core — numbers, verbs, grammar, phonetics, and sentences",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "kifuliiru",
+    "linguistics",
+    "conlang",
+    "wekify"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "~5.8.3",
+    "vitest": "^4.1.12"
+  }
+}
