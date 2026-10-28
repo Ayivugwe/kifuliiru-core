@@ -19,13 +19,6 @@ export {
 } from "./numbers/index.js";
 
 export {
-  collectCoreDisplayRules,
-  groupDisplayRulesByEngine,
-  type DisplayRule,
-  type DisplayRuleTable,
-} from "./rules/index.js";
-
-export {
   detectNounGroup,
   singularToPlural,
   pluralToSingular,

@@ -37,7 +37,8 @@ npm run typecheck
 
 ## Documentation
 
-Maintainers: [docs/INSTRUCTIONS.md](./docs/INSTRUCTIONS.md) (porting, architecture, roadmap).
+- **This package:** API types in `dist/index.d.ts` after `npm run build`; maintainer notes in [docs/INSTRUCTIONS.md](./docs/INSTRUCTIONS.md).
+- **Engine formulas (plain language):** in the **Kifuliiru Lab** app (`kifuliiru-data-generators`) at **`/docs`** — not duplicated in this repo.
 
 ## License
 

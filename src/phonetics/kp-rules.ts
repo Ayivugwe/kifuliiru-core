@@ -75,7 +75,7 @@ export const ONSET_RULE_SUMMARY = {
   swahiliDigraphs: 'ny sh ch (+ dh gh kh th as loan orthography)',
 } as const
 
-/** Human-readable rule list (formerly phonetics dashboard /rules page). */
+/** Human-readable KPG rule list (also surfaced in Lab /docs/phonetics-kpg). */
 export const KP_DOCUMENTED_RULES: KpDocumentedRule[] = [
   {
     id: 'double-vowels',

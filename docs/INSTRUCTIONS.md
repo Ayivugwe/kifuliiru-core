@@ -10,6 +10,12 @@ Workflow, Lab porting, and architecture notes for this repo. **Not** the public 
 
 Local Lab checkout (adjust path): `D:\Projects\kifuliiru-data-generators`
 
+### Lab documentation (not in this repo)
+
+Human-facing **engine formulas** and platform guides live in the Lab app at **`/docs`** (standalone docs shell, separate from Lab theme). The old **Rules hub** (`/rules`) is retired: prose guides plus **Live rules** previews are on each engine doc (e.g. `/docs/conjugation#live-rules`). Legacy URLs redirect into `/docs`.
+
+This package does **not** ship those markdown pages or UI copy—only algorithms and types.
+
 ---
 
 ## Why this package exists
@@ -45,8 +51,8 @@ Build: ESM + `.d.ts` in `dist/` via tsup.
 
 | Project | Role |
 | -------- | ----- |
-| kifuliiru-data-generators (Lab) | Authoring UI, bulk generation, Supabase publish, export |
-| @wekify/kifuliiru-core (this repo) | Pure algorithms + types |
+| kifuliiru-data-generators (Lab) | Authoring UI, bulk generation, **`/docs`** engine reference, Supabase publish, export |
+| @wekify/kifuliiru-core (this repo) | Pure algorithms + types (ship via npm) |
 | @wekify/kifuliiru-react (planned) | UI on top of core |
 | kifuliiru.com / Tabula / KEd | Published corpus, community, books |
 
@@ -113,12 +119,17 @@ After each slice: match Lab behavior; changes **only in this repo**.
 
 ---
 
-## Publishing (when ready)
+## Publishing (ship checklist)
+
+This repo is the **npm-shippable** slice of the ecosystem. Lab UI/docs can ship on their own schedule.
 
 1. `@wekify` scope on npm
-2. Bump semver in `package.json`
-3. `npm run build && npm test`
-4. `npm publish --access public`
+2. Bump semver in `package.json` (and `VERSION` in `src/index.ts` if you keep them in sync)
+3. `npm run typecheck && npm run build && npm test`
+4. Confirm `files: ["dist"]` — no Lab markdown or secrets in the tarball
+5. `npm publish --access public`
+
+After publish, Lab (or other apps) can depend on `@wekify/kifuliiru-core` when we explicitly wire it in; until then, treat Lab as reference only.
 
 ---
 
@@ -129,12 +140,6 @@ After each slice: match Lab behavior; changes **only in this repo**.
 - **Result** (`tier: "result"`): combinatorial / pattern output; may fail semantic rules after retries.
 - **Product** (`tier: "product"`, `semanticallyValid: true`): passed `semanticRules` — treat as finished corpus lines in apps.
 - Apps store products in published tables; results stay in bulk / QA pipelines.
-
-### Display rules (formulas → page text)
-
-- Use `collectCoreDisplayRules()` / `groupDisplayRulesByEngine()` from `src/rules/display-rules.ts`.
-- Each row: `formula` (notation) + `summary` (human text) for `/rules`-style pages.
-- DB-backed rule previews (conjugation rows, number_nouns_agreement_rules) stay in the app; core ships code-derived rules only.
 
 ### Interactive helpers (from Lab `src/lib/kifuliiru/`)
 
