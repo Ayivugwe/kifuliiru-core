@@ -47,6 +47,9 @@ Desktop.ini
 # Cursor local state
 .cursor/
 
+# Optional local overrides (machine-specific paths, secrets)
+.private/
+
 # Accidental large exports from Lab tooling (core is code-only, not corpus dumps)
 generated-data/
 *.csv

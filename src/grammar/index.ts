@@ -1,4 +1,7 @@
-/** Kifuliiru grammar rules and syntactic helpers. */
-export const grammar = {
-  name: "grammar",
-} as const;
+export {
+  KifuliiruGrammar,
+  grammarEngine,
+  type GrammarCategory,
+  type GrammarData,
+  type GrammarElement,
+} from "./kifuliiru-grammar.js";

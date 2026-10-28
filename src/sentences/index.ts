@@ -1,4 +1,6 @@
-/** Sentence generation, parsing, and validation. */
-export const sentences = {
-  name: "sentences",
-} as const;
+export {
+  KifuliiruSentenceGenerator,
+  type SentenceData,
+  type SentenceGeneratorOptions,
+  type SentenceTemplate,
+} from "./kifuliiru-sentences.js";
