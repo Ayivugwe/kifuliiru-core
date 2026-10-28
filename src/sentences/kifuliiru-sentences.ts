@@ -29,17 +29,22 @@ function pickRandom<T>(items: T[], label: string): T {
   return items[Math.floor(Math.random() * items.length)] as T;
 }
 
+export type SentenceTier = "result" | "product";
+
 export interface SentenceData {
-  kifuliiru: string
-  english: string
-  french: string
-  kiswahili: string
-  category: string
-  difficulty: 'beginner' | 'intermediate' | 'advanced'
-  context: string
-  grammar_notes?: string
-  pattern?: string
-  components?: any
+  kifuliiru: string;
+  english: string;
+  french: string;
+  kiswahili: string;
+  category: string;
+  difficulty: "beginner" | "intermediate" | "advanced";
+  context: string;
+  grammar_notes?: string;
+  pattern?: string;
+  components?: any;
+  /** `product` = semantically validated; `result` = raw combinatorial output */
+  tier?: SentenceTier;
+  semanticallyValid?: boolean;
 }
 
 export interface SentenceTemplate {
@@ -184,9 +189,10 @@ export class KifuliiruSentenceGenerator {
     
     // Generate semantically compatible components with retry logic
     let person, verbData, conjugatedVerb, noun, adjective, adverb, place, time
-    let attempts = 0
-    const maxAttempts = 10
-    
+    let attempts = 0;
+    const maxAttempts = 10;
+    let semanticallyValid = false;
+
     do {
       person = this.getRandomPerson()
       verbData = this.getRandomVerb()
@@ -217,9 +223,12 @@ export class KifuliiruSentenceGenerator {
         adjective
       )
       
-      if (isValid) break
-      
-      attempts++
+      if (isValid) {
+        semanticallyValid = true;
+        break;
+      }
+
+      attempts++;
       if (attempts >= maxAttempts) {
         console.warn(`⚠️ Max attempts reached for semantic validation, using fallback`)
         break
@@ -290,8 +299,10 @@ export class KifuliiruSentenceGenerator {
       context: this.categoryContexts[category as keyof typeof this.categoryContexts] || 'General conversation',
       grammar_notes: `Simple sentence with ${person.kifuliiru} (${person.english}) and verb ${verbData.verbKifuliiru} (${verbData.english})`,
       pattern,
-      components: sentenceParts
-    }
+      components: sentenceParts,
+      tier: semanticallyValid ? "product" : "result",
+      semanticallyValid,
+    };
   }
 
   /**

@@ -11,7 +11,30 @@ export { EMPTY_SENTENCE_LEXICON } from "./types/sentence-lexicon.js";
 export {
   KifuliiruNumbers,
   kifuliiruNumbers,
+  buildNumberNounPhrase,
+  generateNumberNoun,
+  getNounClassPrefix,
+  getNumberWordForAgreement,
+  type NumberNounPhrase,
 } from "./numbers/index.js";
+
+export {
+  collectCoreDisplayRules,
+  groupDisplayRulesByEngine,
+  type DisplayRule,
+  type DisplayRuleTable,
+} from "./rules/index.js";
+
+export {
+  detectNounGroup,
+  singularToPlural,
+  pluralToSingular,
+  isLikelyPlural,
+  getAllNounGroups,
+  getNounGroupInfo,
+  NOUN_GROUPS,
+  type NounGroup,
+} from "./noun-pluralizer.js";
 
 export {
   KifuliiruGrammar,

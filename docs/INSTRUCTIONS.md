@@ -122,6 +122,32 @@ After each slice: match Lab behavior; changes **only in this repo**.
 
 ---
 
+## Architecture notes
+
+### Sentences: results vs products
+
+- **Result** (`tier: "result"`): combinatorial / pattern output; may fail semantic rules after retries.
+- **Product** (`tier: "product"`, `semanticallyValid: true`): passed `semanticRules` — treat as finished corpus lines in apps.
+- Apps store products in published tables; results stay in bulk / QA pipelines.
+
+### Display rules (formulas → page text)
+
+- Use `collectCoreDisplayRules()` / `groupDisplayRulesByEngine()` from `src/rules/display-rules.ts`.
+- Each row: `formula` (notation) + `summary` (human text) for `/rules`-style pages.
+- DB-backed rule previews (conjugation rows, number_nouns_agreement_rules) stay in the app; core ships code-derived rules only.
+
+### Interactive helpers (from Lab `src/lib/kifuliiru/`)
+
+- **In core:** noun pluralizer (`src/noun-pluralizer.ts`).
+- **Later:** translator helpers, text analyzer logic — port when needed; UI stays in apps.
+
+### Number + noun agreement
+
+- Algorithm: `src/numbers/number-noun-agreement.ts` (uses pluralizer + agreement suffixes).
+- Dictionary + `number_nouns_agreement_rules` tables remain in Lab/DB; pass rows for admin UI only.
+
+---
+
 ## Roadmap
 
 - [x] Port numbers + tests (`src/numbers/kifuliiru-numbers.ts`)
