@@ -1,7 +1,15 @@
 {
   "name": "@wekify/kifuliiru-core",
   "version": "0.1.0",
-  "description": "Kifuliiru linguistic core — numbers, verbs, grammar, phonetics, and sentences",
+  "description": "TypeScript language engines for Kifuliiru: numerals, number–noun agreement, grammar, KP phonetics, conjugation, and sentence generation. Pure logic—apps inject verbs, lexicon, and DB rules.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ayivugwe/kifuliiru-core.git"
+  },
+  "homepage": "https://github.com/Ayivugwe/kifuliiru-core#readme",
+  "bugs": {
+    "url": "https://github.com/Ayivugwe/kifuliiru-core/issues"
+  },
   "type": "module",
   "sideEffects": false,
   "files": [

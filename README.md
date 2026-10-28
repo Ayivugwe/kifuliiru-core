@@ -1,6 +1,8 @@
 # @wekify/kifuliiru-core
 
-TypeScript library for Kifuliiru linguistics: numbers, verbs, grammar, phonetics, and sentences.
+**Kifuliiru language engines in TypeScript** — turn numbers into Kifuliiru words, build number–noun phrases, run KP phonetics, conjugate verbs, and generate sentences from patterns. This package holds **deterministic logic only**; your app (or the Lab) supplies verb rows, dictionary data, and database conjugation rules.
+
+**v0.1.0** is the first public release. APIs and test coverage will grow in patch/minor releases.
 
 ## Install
 
