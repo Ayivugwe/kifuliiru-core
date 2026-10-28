@@ -67,4 +67,4 @@ export {
 } from "./sentences/index.js";
 
 export const PACKAGE_NAME = "@wekify/kifuliiru-core" as const;
-export const VERSION = "0.1.1" as const;
+export const VERSION = "0.1.2" as const;

@@ -1,6 +1,6 @@
 {
   "name": "@wekify/kifuliiru-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TypeScript language engines for Kifuliiru: numerals, number–noun agreement, grammar, KP phonetics, conjugation, and sentence generation. Pure logic—apps inject verbs, lexicon, and DB rules.",
   "repository": {
     "type": "git",

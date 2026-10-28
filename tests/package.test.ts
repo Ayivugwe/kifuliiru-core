@@ -14,7 +14,7 @@ import { sampleVerbs } from "./fixtures/sample-verbs.js";
 describe("@wekify/kifuliiru-core", () => {
   it("exposes package metadata", () => {
     expect(PACKAGE_NAME).toBe("@wekify/kifuliiru-core");
-    expect(VERSION).toBe("0.1.1");
+    expect(VERSION).toBe("0.1.2");
   });
 
   it("numbers engine matches Lab baseline", () => {
